@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class DisableTriggerBox : MonoBehaviour
 {
-    public GameObject Target;
+    [SerializeField]
+    private GameObject target;
 
     private void OnTriggerEnter(Collider other)
     {
-        Target.SetActive(false);
+        target.SetActive(false);
     }
 }

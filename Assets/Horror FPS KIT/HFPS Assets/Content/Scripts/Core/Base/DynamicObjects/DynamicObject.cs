@@ -784,8 +784,16 @@ namespace HFPS.Systems
         {
             if (isLocked)
             {
+                
+            }
+        }
+
+        public void LockDoor()
+        {
+            if (!isLocked)
+            {
                 if (UnlockSound) { AudioSource.PlayClipAtPoint(UnlockSound, transform.position, m_Volume); }
-                isLocked = false;
+                isLocked = true;
             }
         }
 
