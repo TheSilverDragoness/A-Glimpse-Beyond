@@ -8,11 +8,13 @@ TagManager:
   - Water
   - Zombie
   - Wood
+  - LookableObject
+  - StencilMaskTriggerBox
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Stencil Mask
   - Water
   - UI
   - Stencil Layer 1

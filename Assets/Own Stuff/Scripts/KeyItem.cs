@@ -8,43 +8,69 @@ public class KeyItem : MonoBehaviour
     private BoxCollider boxColllider;
 
     [SerializeField]
-    private GameObject obj1;
+    private GameObject object1;
 
     [SerializeField]
-    private GameObject obj2;
+    private GameObject object2;
 
     private GameObject visibleItem;
-    private int i;
+    private int originalLayer;
+    private bool hasLeftBox;
 
-    private void Update()
+    private void Start()
     {
-        if (obj1.GetComponent<Renderer>().isVisible)
+        hasLeftBox = false;
+    }
+    public void SetVisibleItem(GameObject item)
+    {
+        if (gameObject.GetComponent<Collider>().bounds.Intersects(boxColllider.bounds))
         {
-            visibleItem = obj1;
-        }
-
-        if (obj2.GetComponent<Renderer>().isVisible)
-        {
-            visibleItem = obj2;
-        }
+            visibleItem = item;
+        }   
     }
 
     private void OnTriggerExit(Collider other)
     {
         Debug.Log(visibleItem + " left box");
-        if (other == boxColllider)
+        if (other == boxColllider && !hasLeftBox)
         {
             Debug.Log("Item that left box was keyItem");
-            i = visibleItem.layer;
-            visibleItem.layer = default; 
+            originalLayer = visibleItem.layer;
+            visibleItem.layer = default;
+            
+            Debug.Log("layer " + originalLayer + " has been saved as variable");
+
+            //if (visibleItem = object1)
+            //{
+            //    object2.SetActive(false);
+            //}
+            //else if (visibleItem = object2)
+            //{
+            //    object1.SetActive(false);
+            //}
+
+            hasLeftBox = true;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other == boxColllider)
+        Debug.Log(visibleItem + " entered box");
+        if (other == boxColllider && hasLeftBox)
         {
-            visibleItem.layer = i;
+            Debug.Log("item that entered box is key item");
+            visibleItem.layer = originalLayer;
+
+            //if (visibleItem = object1)
+            //{
+            //    object2.SetActive(true);
+            //}
+            //else if (visibleItem = object2)
+            //{
+            //    object1.SetActive(true);
+            //}
+
+            hasLeftBox = false;
         }
     }
 }
