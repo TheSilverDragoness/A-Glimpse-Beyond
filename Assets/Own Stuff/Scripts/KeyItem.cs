@@ -21,6 +21,7 @@ public class KeyItem : MonoBehaviour
     {
         hasLeftBox = false;
     }
+
     public void SetVisibleItem(GameObject item)
     {
         if (gameObject.GetComponent<Collider>().bounds.Intersects(boxColllider.bounds))
@@ -40,14 +41,16 @@ public class KeyItem : MonoBehaviour
             
             Debug.Log("layer " + originalLayer + " has been saved as variable");
 
-            //if (visibleItem = object1)
-            //{
-            //    object2.SetActive(false);
-            //}
-            //else if (visibleItem = object2)
-            //{
-            //    object1.SetActive(false);
-            //}
+            if (visibleItem = object1)
+            {
+                Debug.Log("object1 has left box");
+                object2.SetActive(false);
+            }
+            else if (visibleItem = object2)
+            {
+                Debug.Log("object 2 has left box");
+                object1.SetActive(false);
+            }
 
             hasLeftBox = true;
         }
@@ -60,6 +63,11 @@ public class KeyItem : MonoBehaviour
         {
             Debug.Log("item that entered box is key item");
             visibleItem.layer = originalLayer;
+
+            object1.SetActive(true);
+            object1.layer = object1.GetComponent<KeyItemChild>().OriginalLayer;
+            object2.SetActive(true);
+            object2.layer = object2.GetComponent<KeyItemChild>().OriginalLayer;
 
             //if (visibleItem = object1)
             //{

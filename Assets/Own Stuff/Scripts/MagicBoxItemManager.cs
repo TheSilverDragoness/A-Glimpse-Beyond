@@ -16,6 +16,7 @@ public class MagicBoxItemManager : MonoBehaviour
     public void SetVisibleItem()
     {
         keyItem.GetComponent<KeyItem>().SetVisibleItem(item);
+        Debug.Log(item + " is visible");
     }
 
     public void DisableOtherBoxSides()

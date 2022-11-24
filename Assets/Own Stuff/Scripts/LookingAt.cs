@@ -24,8 +24,8 @@ public class LookingAt : MonoBehaviour
                 var obj1 = hit.collider.gameObject;
                 storedObject = obj1;
 
-                obj1.GetComponent<MagicBoxItemManager>().SetVisibleItem();
                 obj1.GetComponent<MagicBoxItemManager>().DisableOtherBoxSides();
+                obj1.GetComponent<MagicBoxItemManager>().SetVisibleItem();                
             }
             else if (storedObject != null)
             {
