@@ -2,36 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MagicBoxItemManager : MonoBehaviour
+namespace HFPS.Systems
 {
-    [SerializeField]
-    private GameObject keyItem;
-
-    [SerializeField]
-    private GameObject item;
-
-    [SerializeField]
-    private GameObject[] otherBoxSides;
-
-    public void SetVisibleItem()
+    public class MagicBoxItemManager : MonoBehaviour
     {
-        keyItem.GetComponent<KeyItem>().SetVisibleItem(item);
-        Debug.Log(item + " is visible");
-    }
+        [SerializeField]
+        private GameObject keyItem;
 
-    public void DisableOtherBoxSides()
-    {
-        foreach (GameObject boxSide in otherBoxSides)
+        [SerializeField]
+        private GameObject item;
+
+        [SerializeField]
+        private GameObject[] otherBoxSides;
+
+        public void SetVisibleItem()
         {
-            boxSide.SetActive(false);
+            keyItem.GetComponent<KeyItem>().SetVisibleItem(item);
         }
-    }
 
-    public void EnableOtherBoxSides()
-    {
-        foreach (GameObject boxSide in otherBoxSides)
+        public void DisableOtherBoxSides()
         {
-            boxSide.SetActive(true);
+            foreach (GameObject boxSide in otherBoxSides)
+            {
+                boxSide.SetActive(false);
+            }
+        }
+
+        public void EnableOtherBoxSides()
+        {
+            foreach (GameObject boxSide in otherBoxSides)
+            {
+                boxSide.SetActive(true);
+            }
         }
     }
 }

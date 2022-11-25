@@ -13,17 +13,18 @@ namespace HFPS.Systems
         private GameObject door;
 
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter(Collider placedItem)
         {
-            if (other == key)
+            if (key.transform.parent == placedItem)
             {
+                Debug.Log("Item placed on pedestal is key");
                 door.GetComponentInChildren<DynamicObject>().UnlockDoor();
             }
         }
 
-        private void OnTriggerExit(Collider other)
+        private void OnTriggerExit(Collider placedItem)
         {
-            if (other == key)
+            if (placedItem == key)
             {
                 door.GetComponentInChildren<DynamicObject>().LockDoor();
             }

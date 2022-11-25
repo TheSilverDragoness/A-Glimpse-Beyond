@@ -2,13 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KeyItemChild : MonoBehaviour
+namespace HFPS.Systems
 {
-    [HideInInspector]
-    public int OriginalLayer;
-
-    private void Start()
+    public class KeyItemChild : MonoBehaviour
     {
-        OriginalLayer = gameObject.layer;
+        [HideInInspector]
+        public int originalLayer;
+
+        private void Start()
+        {
+            originalLayer = gameObject.layer;
+        }
+
+        public void ResetItem()
+        {
+            gameObject.SetActive(true);
+            gameObject.layer = originalLayer;
+        }
     }
 }

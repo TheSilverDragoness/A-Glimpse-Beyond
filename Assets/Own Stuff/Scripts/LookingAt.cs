@@ -2,41 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LookingAt : MonoBehaviour
+namespace HFPS.Systems
 {
-    public LayerMask mask;
-
-    private GameObject storedObject;
-
-    private void Update()
+    public class LookingAt : MonoBehaviour
     {
-        if (Physics.Raycast(transform.position, transform.forward, out var hit, Mathf.Infinity, mask))
+        public LayerMask mask;
+
+        private GameObject storedObject;
+
+        private void Update()
         {
-            if (hit.collider.gameObject.tag == "LookableObject")
+            if (Physics.Raycast(transform.position, transform.forward, out var hit, Mathf.Infinity, mask))
             {
-                var obj = hit.collider.gameObject;
+                if (hit.collider.gameObject.tag == "LookableObject")
+                {
+                    var obj = hit.collider.gameObject;
 
-                obj.GetComponent<ReplaceOnTrigger>().Trigger();
-            }
+                    obj.GetComponent<ReplaceOnTrigger>().Trigger();
+                }
 
-            if (hit.collider.gameObject.tag == "StencilMaskTriggerBox")
-            {
-                var obj1 = hit.collider.gameObject;
-                storedObject = obj1;
+                if (hit.collider.gameObject.tag == "StencilMaskTriggerBox")
+                {
+                    var obj1 = hit.collider.gameObject;
+                    storedObject = obj1;
 
-                obj1.GetComponent<MagicBoxItemManager>().DisableOtherBoxSides();
-                obj1.GetComponent<MagicBoxItemManager>().SetVisibleItem();                
+                    obj1.GetComponent<MagicBoxItemManager>().DisableOtherBoxSides();
+                    obj1.GetComponent<MagicBoxItemManager>().SetVisibleItem();
+                }
+                else if (storedObject != null)
+                {
+                    storedObject.GetComponent<MagicBoxItemManager>().EnableOtherBoxSides();
+                    storedObject = null;
+                }
             }
             else if (storedObject != null)
             {
                 storedObject.GetComponent<MagicBoxItemManager>().EnableOtherBoxSides();
                 storedObject = null;
             }
-        }
-        else if (storedObject != null)
-        {
-            storedObject.GetComponent<MagicBoxItemManager>().EnableOtherBoxSides();
-            storedObject = null;
         }
     }
 }

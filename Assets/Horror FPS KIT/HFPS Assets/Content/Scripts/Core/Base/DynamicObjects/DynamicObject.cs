@@ -784,7 +784,8 @@ namespace HFPS.Systems
         {
             if (isLocked)
             {
-                
+                if (UnlockSound) { AudioSource.PlayClipAtPoint(UnlockSound, transform.position, m_Volume); }
+                isLocked = false;
             }
         }
 
