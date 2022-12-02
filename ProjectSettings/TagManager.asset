@@ -10,6 +10,7 @@ TagManager:
   - Wood
   - LookableObject
   - StencilMaskTriggerBox
+  - key
   layers:
   - Default
   - TransparentFX

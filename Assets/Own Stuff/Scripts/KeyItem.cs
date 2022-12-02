@@ -13,7 +13,16 @@ namespace HFPS.Systems
         private BoxCollider keyPlacementCollider;
 
         [SerializeField]
+        private bool startOutOfBox;
+
+        [SerializeField]
+        private GameObject startItem;
+
+        [SerializeField]
         private GameObject[] keyItems;
+
+        [SerializeField]
+        private bool UseKeyBoxCollider;
 
         [SerializeField]
         private GameObject door;
@@ -28,6 +37,20 @@ namespace HFPS.Systems
         private void Start()
         {
             hasLeftBox = false;
+
+            if (startOutOfBox)
+            {
+                foreach (GameObject item in keyItems)
+                {
+                    if (item != startItem)
+                    {
+                        item.SetActive(false);
+                        item.layer = default;
+                    }
+                }
+            }
+
+            key.tag = "key";
         }
 
         public void SetVisibleItem(GameObject item)
@@ -59,7 +82,7 @@ namespace HFPS.Systems
                 hasLeftBox = true;
             }
 
-            if (triggerBox == keyPlacementCollider)
+            if (triggerBox == keyPlacementCollider && UseKeyBoxCollider)
             {
                 door.GetComponentInChildren<DynamicObject>().LockDoor();
             }
@@ -81,7 +104,7 @@ namespace HFPS.Systems
                 hasLeftBox = false;
             }
 
-            if (other == keyPlacementCollider && key.activeSelf)
+            if (other == keyPlacementCollider && key.activeSelf && UseKeyBoxCollider)
             {
                 Debug.Log("Item placed on pedestal is key");
                 door.GetComponentInChildren<DynamicObject>().UnlockDoor();

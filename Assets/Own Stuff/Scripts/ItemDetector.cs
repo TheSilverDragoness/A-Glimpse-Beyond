@@ -6,8 +6,7 @@ namespace HFPS.Systems
 {
     public class ItemDetector : MonoBehaviour
     {
-        [SerializeField]
-        private GameObject key;
+        public GameObject key;
 
         [SerializeField]
         private GameObject door;
