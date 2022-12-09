@@ -9,7 +9,7 @@ namespace HFPS.Systems
         [HideInInspector]
         public int originalLayer;
 
-        private void Start()
+        private void Awake()
         {
             originalLayer = gameObject.layer;
         }

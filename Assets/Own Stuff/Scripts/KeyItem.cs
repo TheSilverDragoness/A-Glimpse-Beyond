@@ -31,7 +31,6 @@ namespace HFPS.Systems
         private GameObject key;
 
         private GameObject visibleItem;
-        private int originalLayer;
         private bool hasLeftBox;
 
         private void Start()
@@ -45,7 +44,8 @@ namespace HFPS.Systems
                     if (item != startItem)
                     {
                         item.SetActive(false);
-                        item.layer = default;
+                        startItem.layer = default;
+                        hasLeftBox = true;
                     }
                 }
             }
@@ -68,7 +68,6 @@ namespace HFPS.Systems
             if (triggerBox == boxCollider && !hasLeftBox)
             {
                 //Debug.Log("Item that left box was keyItem");
-                originalLayer = visibleItem.layer;
                 visibleItem.layer = default;
 
                 foreach (GameObject item in keyItems)
@@ -94,7 +93,6 @@ namespace HFPS.Systems
             if (other == boxCollider && hasLeftBox)
             {
                 //Debug.Log("item that entered box is key item");
-                visibleItem.layer = originalLayer;
 
                 foreach (GameObject item in keyItems)
                 {

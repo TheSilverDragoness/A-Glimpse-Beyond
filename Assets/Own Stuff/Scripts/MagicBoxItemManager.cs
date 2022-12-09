@@ -13,11 +13,18 @@ namespace HFPS.Systems
         private GameObject item;
 
         [SerializeField]
+        private GameObject keyItem1;
+
+        [SerializeField]
+        private GameObject item1;
+
+        [SerializeField]
         private GameObject[] otherBoxSides;
 
         public void SetVisibleItem()
         {
             keyItem.GetComponent<KeyItem>().SetVisibleItem(item);
+            keyItem1.GetComponent<KeyItem>().SetVisibleItem(item1);
         }
 
         public void DisableOtherBoxSides()
