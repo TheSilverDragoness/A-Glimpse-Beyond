@@ -31,6 +31,7 @@ namespace HFPS.Systems
             if (item.gameObject.CompareTag("key"))
             {
                 Debug.Log("key removed from keystand");
+
                 IsTriggered = false;
             }
         }

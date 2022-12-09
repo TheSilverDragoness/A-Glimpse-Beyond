@@ -16,10 +16,6 @@ namespace HFPS.Systems
         [SerializeField]
         private GameObject keyDetector2;
 
-        private bool keyTrigger1 = false;
-        private bool keyTrigger2 = false;
-        //private bool isUnlocked = true;
-
         [SerializeField]
         private GameObject door;
 
@@ -38,47 +34,20 @@ namespace HFPS.Systems
 
         private void Update()
         {
-            //foreach (GameObject child in boxColliders)
-            //{
-            //    if (!child.GetComponent<KeyDetector>().IsTriggered)
-            //    {
-            //        Debug.Log("key detectors not triggered");
-            //        isUnlocked = false;
-            //    }
-            //}
-
-            if (keyDetector1.GetComponent<KeyDetector>().IsTriggered)
-            {
-                keyTrigger1 = true;
-            }
-
-            if (keyDetector2.GetComponent<KeyDetector>().IsTriggered)
-            {
-                keyTrigger2 = true;
-            }
-
-            if (keyTrigger1 && keyTrigger2)
+            if (keyDetector1.GetComponent<KeyDetector>().IsTriggered && keyDetector2.GetComponent<KeyDetector>().IsTriggered)
             {
                 door.GetComponentInChildren<DynamicObject>().UnlockDoor();
                 Debug.Log("door is unlocked");
             }
-            else
+
+            if (!keyDetector1.GetComponent<KeyDetector>().IsTriggered || !keyDetector2.GetComponent<KeyDetector>().IsTriggered)
             {
-                Debug.Log("door is locked");
-                door.GetComponent<DynamicObject>().LockDoor();
+                if (!door.GetComponentInChildren<DynamicObject>().isLocked)
+                {
+                    Debug.Log("door is locked");
+                    door.GetComponentInChildren<DynamicObject>().LockDoor();
+                }
             }
-
-            //if (!isUnlocked)
-            //{
-            //    door.GetComponentInChildren<DynamicObject>().LockDoor();
-            //    //Debug.Log("door is locked");
-            //}
-
-            //if (isUnlocked)
-            //{
-            //    Debug.Log("door is unlocked");
-            //    door.GetComponent<DynamicObject>().UnlockDoor();
-            //}
         }
     }
 }
