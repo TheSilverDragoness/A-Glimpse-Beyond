@@ -16,16 +16,21 @@ namespace HFPS.Systems
 
         private void OnTriggerEnter(Collider item)
         {
-            if (item.tag == "key")
+            Debug.Log("triggerenter " + item);
+
+            if (item.gameObject.CompareTag("key"))
             {
+                Debug.Log("key placed on keystand");
                 IsTriggered = true;
             }
         }
 
         private void OnTriggerExit(Collider item)
         {
-            if (item.tag == "key")
+            Debug.Log("triggerexit " + item);
+            if (item.gameObject.CompareTag("key"))
             {
+                Debug.Log("key removed from keystand");
                 IsTriggered = false;
             }
         }

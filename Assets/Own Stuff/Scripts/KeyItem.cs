@@ -51,6 +51,7 @@ namespace HFPS.Systems
             }
 
             key.tag = "key";
+            key.AddComponent<BoxCollider>().isTrigger = true;
         }
 
         public void SetVisibleItem(GameObject item)
