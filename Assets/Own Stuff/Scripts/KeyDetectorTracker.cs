@@ -6,10 +6,6 @@ namespace HFPS.Systems
 {
     public class KeyDetectorTracker : MonoBehaviour
     {
-        //private List<GameObject> boxColliders = new List<GameObject>();
-        //[SerializeField]
-        //private GameObject[] boxColliders;
-
         [SerializeField]
         private GameObject keyDetector1;
 
@@ -18,14 +14,6 @@ namespace HFPS.Systems
 
         [SerializeField]
         private GameObject door;
-
-        //private void Start()
-        //{
-        //    foreach (Transform child in this.gameObject.transform)
-        //    {
-        //        boxColliders.Add(child.gameObject);
-        //    }
-        //}
 
         private void Start()
         {

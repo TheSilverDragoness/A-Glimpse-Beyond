@@ -6,8 +6,17 @@ public class EnableTriggerBox : MonoBehaviour
 {
     public GameObject Target;
 
+    [SerializeField]
+    private GameObject[] targets;
+
     private void OnTriggerEnter(Collider other)
     {
-        Target.SetActive(true);
+        if (other.gameObject.tag == "Player")
+        {
+            foreach (GameObject item in targets)
+            {
+                item.SetActive(true);
+            }
+        }
     }
 }

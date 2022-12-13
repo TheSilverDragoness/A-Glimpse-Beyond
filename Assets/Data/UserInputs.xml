@@ -1,7 +1,7 @@
 <InputScheme>
   <Action Name="Move">
-    <Binding Index="1" Bind="Keyboard.s" />
-    <Binding Index="2" Bind="null" />
+    <Binding Index="1" Bind="Keyboard.w" />
+    <Binding Index="2" Bind="Keyboard.s" />
     <Binding Index="3" Bind="Keyboard.a" />
     <Binding Index="4" Bind="Keyboard.d" />
     <Binding Index="5" Bind="DualShockGamepad.leftStick" />

@@ -5,16 +5,31 @@ using UnityEngine;
 public class ReplaceOnTrigger : MonoBehaviour
 {
     [SerializeField]
-    private GameObject room1;
+    private GameObject[] enableRooms;
+
     [SerializeField]
-    private GameObject room2;
+    private GameObject[] disableRooms;
+
     [SerializeField]
     private GameObject[] relatedObjects;
 
     public void Trigger()
     {
-        room1.SetActive(false);
-        room2.SetActive(true);
+        if (enableRooms != null)
+        {
+            foreach (GameObject room in enableRooms)
+            {
+                room.SetActive(true);
+            }
+        }
+
+        if (disableRooms != null)
+        {
+            foreach (GameObject room in disableRooms)
+            {
+                room.SetActive(false);
+            }
+        }
         
         foreach (GameObject obj in relatedObjects)
         {

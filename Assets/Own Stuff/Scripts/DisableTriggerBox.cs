@@ -7,8 +7,17 @@ public class DisableTriggerBox : MonoBehaviour
     [SerializeField]
     private GameObject target;
 
+    [SerializeField]
+    private GameObject[] targets;
+
     private void OnTriggerEnter(Collider other)
     {
-        target.SetActive(false);
+        if (other.gameObject.tag == "Player")
+        {
+            foreach (GameObject item in targets)
+            {
+                item.SetActive(false);
+            }
+        }
     }
 }
