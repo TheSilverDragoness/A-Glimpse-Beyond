@@ -12,6 +12,9 @@ namespace HFPS.Systems
         [SerializeField]
         private GameObject[] disableRooms;
 
+        [SerializeField]
+        private float delay;
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.tag == "Player")
@@ -24,7 +27,7 @@ namespace HFPS.Systems
         {
             door.GetComponentInChildren<DynamicObject>().LockDoor();
 
-            yield return new WaitForSecondsRealtime(1);
+            yield return new WaitForSecondsRealtime(delay);
 
             if (disableRooms != null && !door.GetComponentInChildren<DynamicObject>().isOpened)
             {
