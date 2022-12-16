@@ -23,8 +23,15 @@ namespace HFPS.Systems
 
         public void SetVisibleItem()
         {
-            keyItem.GetComponent<KeyItem>().SetVisibleItem(item);
-            keyItem1.GetComponent<KeyItem>().SetVisibleItem(item1);
+            if (keyItem != null)
+            {
+                keyItem.GetComponent<KeyItem>().SetVisibleItem(item);
+            }
+            
+            if (keyItem1 != null)
+            {
+                keyItem1.GetComponent<KeyItem>().SetVisibleItem(item1);
+            }
         }
 
         public void DisableOtherBoxSides()
